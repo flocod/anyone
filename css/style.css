@@ -631,6 +631,8 @@ a :hover {
   letter-spacing: 0px;
   color: var(--text);
   max-width: 65%;
+  white-space: pre-line;
+  word-wrap: break-word;
 }
 @media all and (max-width: 1000px) {
   .chat_side .chat_side_struct .chat_container .chat_container_struct .item_msg .item_msg_box {
