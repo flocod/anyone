@@ -2,7 +2,6 @@
 $theme: #194056;
 //polices
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
 /**
 Thin 100
 Extra-light 200
@@ -35,8 +34,6 @@ Black 900
   outline: none;
   scroll-behavior: smooth;
 }
-
-// scroll bar
 
 /*** scroollbar ***/
 *::-webkit-scrollbar {
@@ -106,6 +103,15 @@ a {
     left: 50%;
     display: flex;
     transform: translate(-50%, -50%);
+
+    @media all and (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: auto;
+      width: calc(97% - 20px);
+      justify-content: flex-start;
+    }
   }
 }
 
@@ -129,11 +135,25 @@ a {
   flex-direction: column;
   justify-content: space-between;
 
-  // align-items: s;
   max-width: 600px;
   width: 50%;
   background: rgba(0, 128, 0, 0);
   height: 100%;
+
+  @media all and (max-width: 1000px) {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  @media all and (max-width: 600px) {
+    .logo {
+      margin-top: 0px;
+      img {
+        width: 110px;
+      }
+    }
+  }
 
   .intro {
     display: flex;
@@ -146,6 +166,14 @@ a {
       display: block;
       width: 3vw;
       margin-bottom: 20px;
+
+      @media all and (max-width: 1000px) {
+        width: 5vw;
+      }
+      @media all and (max-width: 600px) {
+        margin-bottom: 10px;
+      }
+
       img {
         width: 100%;
       }
@@ -163,10 +191,24 @@ a {
       .t1 {
         font: normal normal 100 3vw Poppins;
         letter-spacing: 0px;
+        @media all and (max-width: 1000px) {
+          font: normal normal 100 5vw Poppins;
+        }
+
+        @media all and (max-width: 600px) {
+          font: normal normal 100 7vw Poppins;
+        }
       }
 
       .t2 {
         font: normal normal 100 1.7vw Poppins;
+        @media all and (max-width: 1000px) {
+          font: normal normal 100 3vw Poppins;
+        }
+        @media all and (max-width: 600px) {
+          font: normal normal 100 5vw Poppins;
+          display: none;
+        }
       }
     }
 
@@ -183,6 +225,10 @@ a {
         text-align: center;
         font: normal normal 100 3.6vw Poppins;
       }
+
+      @media all and (max-width: 1000px) {
+        display: none;
+      }
     }
   }
 
@@ -195,7 +241,7 @@ a {
     letter-spacing: 0px;
     color: #ffffff;
 
-    .text{
+    .text {
       opacity: 0.8;
     }
 
@@ -204,6 +250,10 @@ a {
       opacity: 1 !important;
       font-weight: 500;
       margin-top: 4px;
+    }
+
+    @media all and (max-width: 1000px) {
+      display: none;
     }
   }
 }
@@ -222,6 +272,26 @@ a {
   // opacity: 0.14;
   backdrop-filter: blur(10px);
 
+  @media all and (max-width: 1000px) {
+    width: 100%;
+    height: calc(60vh - 50px);
+    align-items: center;
+    justify-content: flex-start;
+    transform: translateY(-18px);
+  }
+
+  @media all and (max-width: 600px) {
+    height: calc(74vh - 50px);
+    background: #282a37a9 0% 0% no-repeat padding-box;
+    // background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 4px solid #00000011;
+    backdrop-filter: blur(5px);
+  }
+
+  @media all and (max-width: 420px) {
+    height: calc(78vh - 50px);
+  }
+
   .chat_side_struct {
     display: block;
     width: 95%;
@@ -229,11 +299,24 @@ a {
     border-radius: 12px;
     position: relative;
 
+    @media all and (max-width: 600px) {
+      height: 95%;
+    }
+
     .tools {
       display: flex;
       justify-content: space-between;
       width: 100%;
       align-items: flex-start;
+
+      @media all and (max-width: 1000px) {
+        height: 10%;
+      }
+
+      @media all and (max-width: 600px) {
+        height: 40px;
+        margin-top: 8px;
+      }
 
       .online_box {
         display: flex;
@@ -249,6 +332,12 @@ a {
           justify-content: center;
           align-items: center;
           position: relative;
+
+          @media all and (max-width: 1000px) {
+            width: 30px;
+            height: 30px;
+          }
+
           &::after {
             position: absolute;
             top: 0;
@@ -259,6 +348,13 @@ a {
             background: #20db58 0% 0% no-repeat padding-box;
             border: 2px solid var(--text);
             border-radius: 50%;
+
+            @media all and (max-width: 1000px) {
+              width: 8px;
+              height: 8px;
+              border: 1px solid var(--text);
+              transform: translateX(20%);
+            }
           }
 
           .line_ico {
@@ -283,12 +379,19 @@ a {
           color: var(--text);
           .t1 {
             font: normal normal normal 20px/20px Poppins;
+            @media all and (max-width: 1000px) {
+              font: normal normal normal 15px Poppins;
+            }
           }
           .t2 {
             margin-top: 3px;
             font: normal normal normal 16px Poppins;
             letter-spacing: 0px;
             opacity: 0.63;
+            @media all and (max-width: 1000px) {
+              margin-top: 0px;
+              font: normal normal normal 11px Poppins;
+            }
           }
         }
       }
@@ -306,6 +409,12 @@ a {
         opacity: 1;
         border: 8px solid var(--theme);
 
+        @media all and (max-width: 1000px) {
+          width: 54px;
+          height: 18px;
+          border: 8px solid var(--theme);
+        }
+
         .ico {
           // background: #194056;
           display: flex;
@@ -317,6 +426,13 @@ a {
           transform: scale(0.8);
           opacity: 0.6;
           transition: 0.4s;
+
+          @media all and (max-width: 1000px) {
+            background: transparent;
+            height: 25px;
+            width: 25px;
+          }
+
           img {
             width: 60%;
           }
@@ -337,20 +453,31 @@ a {
     .chat_container {
       margin-top: 20px;
       display: flex;
-
       justify-content: center;
       width: 100%;
       max-height: 75%;
-
       overflow-y: auto;
-
-      /*** scroollbar ***/
-
-      &::-webkit-scrollbar {
-        width: 20px;
-        cursor: pointer;
+      position: relative;
+      @media all and (max-width: 1000px) {
+        margin-top: 0px;
+        justify-content: space-evenly;
+        max-height: 80%;
       }
 
+      @media all and (max-width: 600px) {
+        max-height: calc(100% - 40px - 10%);
+      }
+
+      /*** scroollbar ***/
+      &::-webkit-scrollbar {
+        width: 20px;
+
+        @media all and (max-width: 1000px) {
+          width: 15px;
+        }
+
+        cursor: pointer;
+      }
       &::-webkit-scrollbar-track {
         border-radius: 0px;
         -webkit-box-shadow: inset 0 0 0px black;
@@ -382,6 +509,12 @@ a {
         width: 97%;
         display: block;
         padding-top: 20px;
+
+        @media all and (max-width: 1000px) {
+          padding-top: 10px;
+          height: 90%;
+        }
+
         .item_msg {
           /* UI Properties */
           display: flex;
@@ -390,6 +523,11 @@ a {
           flex-direction: column;
           // width: 100%;
           margin-top: 5px;
+
+          @media all and (max-width: 1000px) {
+            margin-top: 0px;
+          }
+
           .item_msg_box {
             padding: 18px;
             padding-top: 10px;
@@ -398,7 +536,14 @@ a {
             letter-spacing: 0px;
             color: var(--text);
             max-width: 65%;
-            white-space: pre-line;
+            // white-space: pre-line;
+
+            @media all and (max-width: 1000px) {
+              font: normal normal normal 0.8em Poppins;
+              padding: 10px;
+              padding-top: 10px;
+              padding-bottom: 10px;
+            }
           }
 
           .item_msg_box_time {
@@ -407,12 +552,19 @@ a {
             color: #ffffff;
             opacity: 0.59;
             margin-top: 1px;
+
+            @media all and (max-width: 1000px) {
+              font: normal normal normal 0.6em Poppins;
+            }
           }
         }
         .receive {
           .item_msg_box {
             background: #1b8ffa 0% 0% no-repeat padding-box;
             border-radius: 30px 30px 30px 4px;
+            @media all and (max-width: 1000px) {
+              border-radius: 15px 15px 15px 4px;
+            }
           }
         }
         .send {
@@ -420,6 +572,9 @@ a {
           .item_msg_box {
             background: #282a37 0% 0% no-repeat padding-box;
             border-radius: 30px 30px 4px 30px;
+            @media all and (max-width: 1000px) {
+              border-radius: 15px 15px 15px 4px;
+            }
           }
         }
       }
@@ -433,6 +588,17 @@ a {
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
+
+      @media all and (max-width: 1000px) {
+        height: auto;
+        position: fixed;
+        width: 95%;
+        bottom: 10px;
+      }
+      // @media all and (max-width: 600px) {
+      //   bottom: 7px;
+      // }
+
       .alert_action {
         transition: 0.4s;
         opacity: 0;
@@ -441,6 +607,9 @@ a {
         color: #ffffff;
         padding-top: 4px;
         padding-bottom: 3px;
+        @media all and (max-width: 1000px) {
+          font: normal normal normal 0.6em Poppins;
+        }
       }
       .alert {
         transition: 0.4s;
@@ -456,6 +625,16 @@ a {
         border-radius: 20px;
         display: flex;
         justify-content: space-between;
+        @media all and (max-width: 1000px) {
+          border: 5px solid var(--theme);
+          height: 50px;
+        }
+
+        @media all and (max-width: 600px) {
+          border: 4px solid var(--theme);
+          height: 45px;
+        }
+
         textarea {
           padding-left: 10px;
           padding-top: 4px;
@@ -468,7 +647,11 @@ a {
           font-size: 20px;
           height: 50px;
           background: var(--theme) 0% 0% no-repeat padding-box;
-          border-radius: 17px;
+          border-radius: 20px;
+          @media all and (max-width: 1000px) {
+            height: 100%;
+            font: normal normal normal 0.8em Poppins;
+          }
         }
 
         .btn_send {
@@ -481,6 +664,14 @@ a {
           justify-content: center;
           cursor: pointer;
           user-select: none;
+          @media all and (max-width: 1000px) {
+            width: 50px;
+          }
+
+          @media all and (max-width: 600px) {
+            width: 46px;
+          }
+
           img {
             height: 50%;
           }
