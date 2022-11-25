@@ -320,6 +320,7 @@ a :hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
   height: 100%;
   width: 50%;
   background: rgba(40, 42, 55, 0.5607843137) 0% 0% no-repeat padding-box;
