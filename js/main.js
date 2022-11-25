@@ -619,13 +619,23 @@ function sendText(conn, message) {
 //   var conn = new WebSocket("ws://localhost:8080");
 
 //   var conn = new WebSocket("ws://fentasunlightsarl.com/sever_web");
-var conn = new WebSocket(
+let conn = new WebSocket(
   "wss://socketsbay.com/wss/v2/100/099b14aa2233559879b43f5f56df13d5/"
 );
 
 conn.onopen = function (e) {
   console.log("Connection established!");
-  conn.send("Hello World");
+ 
+ let msg ="There is new user. <br> Say Hello!"
+  let transport = {
+    message: msg,
+    color: text_color,
+  };
+
+  transport = JSON.stringify(transport);
+  conn.send(transport);
+  console.log(msg);
+
 };
 
 function getTime() {
@@ -757,7 +767,7 @@ conn.onmessage = function (e) {
   console.log(e.data);
 
   let obj = JSON.parse(e.data);
-
+  console.log(obj);
   let message = `
     <div class="item_msg receive">
     <div class="item_msg_box"  style="background:${obj.color}">${obj.message}</div>
@@ -781,7 +791,7 @@ $("#btn_send").on("click", function () {
 
     transport = JSON.stringify(transport);
 
-    // conn.send(transport);
+    conn.send(transport);
     let time = getTime();
     let message = `<div class="item_msg send">
                   <div class="item_msg_box">${msg}</div>
