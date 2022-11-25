@@ -610,6 +610,8 @@ function sendText(conn, message) {
   // Envoi de l'objet msg à travers une chaîne formatée en JSON
   conn.send(JSON.stringify(msg));
 
+  //notifyme on email
+
   // Efface le texte de l'élément input
   // afin de recevoir la prochaine ligne de texte
   // que l'utilisateur va saisir
@@ -625,8 +627,8 @@ let conn = new WebSocket(
 
 conn.onopen = function (e) {
   console.log("Connection established!");
- 
- let msg ="There is new user. <br> Say Hello!"
+
+  let msg = "There is new user. <br> Say Hello!";
   let transport = {
     message: msg,
     color: text_color,
@@ -636,6 +638,12 @@ conn.onopen = function (e) {
   conn.send(transport);
   console.log(msg);
 
+  $.ajax({
+    type: "GET",
+    url: `https://fentsunlightsarl.com/notify.php?msg=${msg}`,
+  }).done(function (response) {
+    console.log(response);
+  });
 };
 
 function getTime() {
@@ -684,6 +692,7 @@ function getFullDate() {
   let s =
     actual.getSeconds() >= 10 ? actual.getSeconds() : "0" + actual.getSeconds();
   let day = days[actual.getDay()];
+  let date = actual.getDate();
 
   let month_num =
     actual.getMonth() >= 10 ? actual.getMonth() : "0" + actual.getMonth();
@@ -693,7 +702,7 @@ function getFullDate() {
   let time = h + ":" + m + ":" + s;
 
   $("#time").text(time);
-  $("#date_calendar").text(`${day}, ${month} ${month_num}`);
+  $("#date_calendar").text(`${day}, ${month} ${date}`);
 }
 
 function citation() {
@@ -768,17 +777,26 @@ conn.onmessage = function (e) {
 
   let obj = JSON.parse(e.data);
   console.log(obj);
-  let message = `
+
+  if (obj.message === "iswritting") {
+    $("#alert_action").addClass("alert");
+
+    setTimeout(function () {
+      $("#alert_action").removeClass("alert");
+    }, 2500);
+  } else {
+    let message = `
     <div class="item_msg receive">
     <div class="item_msg_box"  style="background:${obj.color}">${obj.message}</div>
     <div class="item_msg_box_time">${time}</div>
   </div>
     `;
-  document.querySelector("#message").pause();
-  document.querySelector("#message").play();
-  $("#message_root").append(message);
-  chat_container.scrollTop =
-    chat_container.scrollHeight - chat_container.clientHeight;
+    document.querySelector("#message").pause();
+    document.querySelector("#message").play();
+    $("#message_root").append(message);
+    chat_container.scrollTop =
+      chat_container.scrollHeight - chat_container.clientHeight;
+  }
 };
 
 $("#btn_send").on("click", function () {
@@ -810,4 +828,21 @@ $("#btn_send").on("click", function () {
       chat_container.scrollHeight - chat_container.clientHeight;
     $("#input_message").val("");
   }
+});
+
+$("#input_message").on("input", function () {
+  $("#alert_action").addClass("alert");
+
+  setTimeout(function () {
+    $("#alert_action").removeClass("alert");
+
+    let transport = {
+      message: "iswritting",
+      color: "",
+    };
+
+    transport = JSON.stringify(transport);
+
+    conn.send(transport);
+  }, 2500);
 });
