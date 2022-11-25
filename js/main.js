@@ -157,7 +157,7 @@ $("#switch_theme").on("click", function (params) {
   switch_theme();
 });
 
-switch_theme();
+setTheme("sunny");
 citation();
 getFullDate();
 setInterval(function () {
