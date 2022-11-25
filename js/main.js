@@ -144,12 +144,12 @@ function switch_theme() {
   $("#sun").toggleClass("active");
   $("#moon").toggleClass("active");
 
-  if (theme === "sunny") {
-    setTheme("night");
-    console.log("actual theme :", "night");
-  } else if (theme === "night") {
+  if (theme === "night") {
     setTheme("sunny");
-    console.log("actual theme:", "sunny");
+    console.log("actual theme :", "sunny");
+  } else if (theme === "sunny") {
+    setTheme("night");
+    console.log("actual theme:", "night");
   }
 }
 
