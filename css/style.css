@@ -351,7 +351,7 @@ a :hover {
 }
 @media all and (max-width: 420px) {
   .chat_side {
-    height: calc(85vh - 50px);
+    height: calc(79vh - 50px);
   }
 }
 .chat_side .chat_side_struct {
