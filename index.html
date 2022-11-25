@@ -46,10 +46,11 @@
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body class="body theme">
+  <body theme="sunny" class="body theme">
     <div class="main">
-      <div class="image_fond filter_bg">
-        <img src="https://source.unsplash.com/random/?sun,raise" alt="c" />
+      <div id="background" class="image_fond filter_bg">
+        <!-- <img src="https://source.unsplash.com/random/1920×1158/?sunny" alt="background" /> -->
+        <!-- <img src="https://source.unsplash.com/random/?sun,raise" alt="c" /> -->
       </div>
       <div class="main_struct">
         <div class="welcome_side">
@@ -68,28 +69,28 @@
             </div>
 
             <div class="date_container">
-              <div class="time">
-                <span class="h">06</span>:<span class="M">30</span>:<span
+              <div id="time" class="time">
+                <!-- <span class="h">06</span>:<span class="M">30</span>:<span
                   class="S"
                   >12</span
-                >
+                > -->
               </div>
 
-              <div class="date_calendar">Thursday, July 30</div>
+              <div id="date_calendar" class="date_calendar">Thursday, July 30</div>
             </div>
           </div>
 
           <div class="citation">
             <div class="text">
               "
-              <span class="value"
+              <span id="citationValue" class="value"
                 >Great ideas often receive violent opposition from mediocre
                 minds</span
               >
               "
             </div>
 
-            <div class="autor">Albert Einstein</div>
+            <div id="citationAuthor" class="autor">Albert Einstein</div>
           </div>
         </div>
 
@@ -109,11 +110,11 @@
                 </div>
               </div>
 
-              <div class="switch_theme">
-                <div class="ico active">
+              <div id="switch_theme" class="switch_theme">
+                <div id="sun" class="ico active">
                   <img src="images/sun.svg" alt="" />
                 </div>
-                <div class="ico">
+                <div id="moon"  class="ico ">
                   <img src="images/moon.svg" alt="" />
                 </div>
               </div>

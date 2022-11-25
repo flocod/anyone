@@ -46,16 +46,132 @@ conn.onopen = function (e) {
 
 function getTime() {
   let actual = new Date();
-
-  let h = actual.getHours() > 10 ? actual.getHours() : "0" + actual.getHours();
+  let h = actual.getHours() >= 10 ? actual.getHours() : "0" + actual.getHours();
   let m =
-    actual.getMinutes() > 10 ? actual.getMinutes() : "0" + actual.getMinutes();
+    actual.getMinutes() >= 10 ? actual.getMinutes() : "0" + actual.getMinutes();
   let ampm = h >= 12 ? "PM" : "AM";
-
   let time = h + ":" + m + " " + ampm;
-
   return time;
 }
+
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+// let day = days[now.getDay()];
+// let month = months[now.getMonth()];
+
+function getFullDate() {
+  let actual = new Date();
+  let h = actual.getHours() >= 10 ? actual.getHours() : "0" + actual.getHours();
+
+  let m =
+    actual.getMinutes() >= 10 ? actual.getMinutes() : "0" + actual.getMinutes();
+  let s =
+    actual.getSeconds() >= 10 ? actual.getSeconds() : "0" + actual.getSeconds();
+  let day = days[actual.getDay()];
+
+  let month_num =
+    actual.getMonth() >= 10 ? actual.getMonth() : "0" + actual.getMonth();
+
+  let month = months[actual.getMonth()].slice(0, 3);
+  //   let ampm = h >= 12 ? "PM" : "AM";
+  let time = h + ":" + m + ":" + s;
+
+  $("#time").text(time);
+  $("#date_calendar").text(`${day}, ${month} ${month_num}`);
+}
+
+function citation() {
+  fetch("https://api.quotable.io/random")
+    .then(function (response) {
+      // response is a json string
+      return response.json(); // convert it to a pure JavaScript object
+    })
+    .then(function (data) {
+      //Process Your data
+      if (data) {
+        $("#citationAuthor").text(data.author);
+        $("#citationValue").text(data.content);
+      }
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
+function setTheme(theme) {
+
+
+    if(window.innerWidth>=1000){
+        fetch(`https://source.unsplash.com/random/1920×1158/?${theme}`).then(
+            function (response) {
+              $("body").attr("theme", theme);
+              $("#background").html(`<img src="${response.url}" alt="background" />`);
+            }
+          );
+    }else{
+        fetch(`https://source.unsplash.com/random/500×800/?${theme}`).then(
+            function (response) {
+              $("body").attr("theme", theme);
+              $("#background").html(`<img src="${response.url}" alt="background" />`);
+            }
+          );
+    }
+
+
+
+
+}
+
+function switch_theme() {
+  const theme = $("body").attr("theme");
+
+  $("#sun").toggleClass("active");
+  $("#moon").toggleClass("active");
+
+  if (theme === "sunny") {
+    setTheme("night");
+    console.log("actual theme :", "night");
+  } else if (theme === "night") {
+    setTheme("sunny");
+    console.log("actual theme:", "sunny");
+  }
+}
+
+$("#switch_theme").on("click", function (params) {
+  switch_theme();
+});
+
+switch_theme();
+citation();
+getFullDate();
+setInterval(function () {
+  getFullDate();
+}, 1000);
+setInterval(function () {
+  citation();
+}, 20000);
 
 conn.onmessage = function (e) {
   let time = getTime();
@@ -76,9 +192,8 @@ conn.onmessage = function (e) {
 };
 
 $("#btn_send").on("click", function () {
-    let msg =($("#input_message").val()).trim();
+  let msg = $("#input_message").val().trim();
   if (msg != "") {
- 
     conn.send(msg);
     let time = getTime();
     let message = `<div class="item_msg send">

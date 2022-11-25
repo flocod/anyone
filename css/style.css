@@ -132,6 +132,11 @@ a :hover {
             justify-content: flex-start;
   }
 }
+@media all and (max-width: 600px) {
+  .main .main_struct {
+    height: 98%;
+  }
+}
 
 .filter_bg::after {
   position: absolute;
@@ -140,7 +145,7 @@ a :hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: transparent radial-gradient(closest-side at 50% 50%, rgba(0, 0, 0, 0.2196078431) 0%, rgba(0, 0, 0, 0.5058823529) 100%) 0% 0% no-repeat padding-box;
+  background: transparent radial-gradient(closest-side at 50% 50%, rgba(0, 0, 0, 0.2823529412) 0%, rgba(0, 0, 0, 0.3137254902) 100%) 0% 0% no-repeat padding-box;
   z-index: 1;
 }
 
@@ -168,8 +173,16 @@ a :hover {
   }
 }
 @media all and (max-width: 600px) {
+  .welcome_side {
+    margin-bottom: 0px;
+    height: auto;
+  }
   .welcome_side .logo {
     margin-top: 0px;
+    margin-bottom: 10px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
   }
   .welcome_side .logo img {
     width: 110px;
@@ -188,6 +201,11 @@ a :hover {
           align-items: center;
   width: 100%;
   align-items: center;
+}
+@media all and (max-width: 600px) {
+  .welcome_side .intro {
+    margin-top: 9vh;
+  }
 }
 .welcome_side .intro .hi_ico {
   display: block;
@@ -307,8 +325,8 @@ a :hover {
   background: rgba(40, 42, 55, 0.5607843137) 0% 0% no-repeat padding-box;
   border: 6px solid rgba(0, 0, 0, 0.1294117647);
   border-radius: 32px;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
 }
 @media all and (max-width: 1000px) {
   .chat_side {
@@ -320,22 +338,15 @@ a :hover {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
-    -webkit-transform: translateY(-18px);
-            transform: translateY(-18px);
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
   }
 }
 @media all and (max-width: 600px) {
   .chat_side {
-    height: calc(74vh - 50px);
+    height: calc(90vh - 50px);
     background: rgba(40, 42, 55, 0.662745098) 0% 0% no-repeat padding-box;
     border: 4px solid rgba(0, 0, 0, 0.0666666667);
-    -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-  }
-}
-@media all and (max-width: 420px) {
-  .chat_side {
-    height: calc(78vh - 50px);
   }
 }
 .chat_side .chat_side_struct {
@@ -674,7 +685,7 @@ a :hover {
 }
 @media all and (max-width: 1000px) {
   .chat_side .chat_side_struct .chat_container .chat_container_struct .send .item_msg_box {
-    border-radius: 15px 15px 15px 4px;
+    border-radius: 15px 15px 4px 15px;
   }
 }
 .chat_side .chat_side_struct .writting {

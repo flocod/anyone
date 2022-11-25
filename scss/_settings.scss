@@ -112,6 +112,12 @@ a {
       width: calc(97% - 20px);
       justify-content: flex-start;
     }
+
+    @media all and (max-width: 600px) {
+     height: 98%;
+    }
+
+
   }
 }
 
@@ -124,7 +130,7 @@ a {
     width: 100%;
     height: 100%;
     background: transparent
-      radial-gradient(closest-side at 50% 50%, #00000038 0%, #00000081 100%) 0%
+      radial-gradient(closest-side at 50% 50%, #00000048 0%, #00000050 100%) 0%
       0% no-repeat padding-box;
     z-index: 1;
   }
@@ -147,8 +153,14 @@ a {
   }
 
   @media all and (max-width: 600px) {
+    margin-bottom: 0px;
+    height: auto;
     .logo {
       margin-top: 0px;
+      margin-bottom: 10px;
+      position: absolute;
+      left: 0px;
+      top:0px;
       img {
         width: 110px;
       }
@@ -161,6 +173,10 @@ a {
     align-items: center;
     width: 100%;
     align-items: center;
+
+    @media all and (max-width: 600px) {
+      margin-top: 9vh;
+    }
 
     .hi_ico {
       display: block;
@@ -270,27 +286,27 @@ a {
   border: 6px solid #00000021;
   border-radius: 32px;
   // opacity: 0.14;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 
   @media all and (max-width: 1000px) {
     width: 100%;
     height: calc(60vh - 50px);
     align-items: center;
     justify-content: flex-start;
-    transform: translateY(-18px);
+    transform: translateY(0px);
   }
 
   @media all and (max-width: 600px) {
-    height: calc(74vh - 50px);
+    height: calc(90vh - 50px);
     background: #282a37a9 0% 0% no-repeat padding-box;
     // background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 4px solid #00000011;
-    backdrop-filter: blur(5px);
+    // backdrop-filter: blur(10px);
   }
 
-  @media all and (max-width: 420px) {
-    height: calc(78vh - 50px);
-  }
+  // @media all and (max-width: 420px) {
+  //   height: calc(78vh - 50px);
+  // }
 
   .chat_side_struct {
     display: block;
@@ -574,7 +590,7 @@ a {
             background: #282a37 0% 0% no-repeat padding-box;
             border-radius: 30px 30px 4px 30px;
             @media all and (max-width: 1000px) {
-              border-radius: 15px 15px 15px 4px;
+              border-radius: 15px 15px 4px 15px;
             }
           }
         }
