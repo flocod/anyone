@@ -344,9 +344,14 @@ a :hover {
 }
 @media all and (max-width: 600px) {
   .chat_side {
-    height: calc(90vh - 50px);
+    height: calc(80vh - 50px);
     background: rgba(40, 42, 55, 0.662745098) 0% 0% no-repeat padding-box;
     border: 4px solid rgba(0, 0, 0, 0.0666666667);
+  }
+}
+@media all and (max-width: 420px) {
+  .chat_side {
+    height: calc(85vh - 50px);
   }
 }
 .chat_side .chat_side_struct {
