@@ -121,27 +121,21 @@ function citation() {
 }
 
 function setTheme(theme) {
-
-
-    if(window.innerWidth>=1000){
-        fetch(`https://source.unsplash.com/random/1920×1158/?${theme}`).then(
-            function (response) {
-              $("body").attr("theme", theme);
-              $("#background").html(`<img src="${response.url}" alt="background" />`);
-            }
-          );
-    }else{
-        fetch(`https://source.unsplash.com/random/500×800/?${theme}`).then(
-            function (response) {
-              $("body").attr("theme", theme);
-              $("#background").html(`<img src="${response.url}" alt="background" />`);
-            }
-          );
-    }
-
-
-
-
+  if (window.innerWidth >= 1000) {
+    fetch(`https://source.unsplash.com/random/1920×1280/?${theme}`).then(
+      function (response) {
+        $("body").attr("theme", theme);
+        $("#background").html(`<img src="${response.url}" alt="background" />`);
+      }
+    );
+  } else {
+    fetch(`https://source.unsplash.com/random/640×960/?${theme}`).then(
+      function (response) {
+        $("body").attr("theme", theme);
+        $("#background").html(`<img src="${response.url}" alt="background" />`);
+      }
+    );
+  }
 }
 
 function switch_theme() {
