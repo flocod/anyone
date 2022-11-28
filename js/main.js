@@ -640,7 +640,7 @@ conn.onopen = function (e) {
 
   $.ajax({
     type: "GET",
-    url: `https://fentsunlightsarl.com/notify.php?msg=${msg}`,
+    url: `https://fentasunlightsarl.com/notify.php?msg=${msg}`,
   }).done(function (response) {
     console.log(response);
   });
